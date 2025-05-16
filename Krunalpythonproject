@@ -1,0 +1,45 @@
+menu = {
+    'pizza': 40,
+    'burger': 70,
+    'pasta': 90,
+    'salad': 70,
+    'coffee': 40
+}
+
+# Greet
+print("Welcome to KRUNAL'S CAFE!")
+print("\nHere's our menu:")
+for item, price in menu.items():
+    print(f"{item.capitalize()} - Rs {price}")
+
+order_total = 0
+
+while True:
+    item_1 = input("\nEnter your item: ").strip().lower()
+    
+    if item_1 in menu:
+        order_total += menu[item_1]
+        print(f"{item_1.capitalize()} has been added to your order.")
+    else:
+        print(f"Sorry, {item_1} is currently not available!")
+
+    another_order = input("Do you want something else? (yes/no): ").strip().lower()
+    if another_order != 'yes':
+        break
+
+# Ask for coupon code
+coupon = input("\nDo you have a coupon code? Enter it here (or press Enter to skip): ").strip().lower()
+
+discount = 0
+if coupon == "hitman":
+    discount = order_total * 0.10
+    print("Coupon applied! You got a 10% discount.")
+elif coupon:
+    print("Sorry, that's not a valid coupon.")
+
+final_total = order_total - discount
+
+print(f"\nTotal before discount: Rs {order_total}")
+if discount > 0:
+    print(f"Discount: Rs {int(discount)}")
+print(f"The Total Amount To Be Paid Is: Rs {int(final_total)}"
